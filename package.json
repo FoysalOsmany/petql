@@ -1,0 +1,23 @@
+{
+  "name": "petql",
+  "version": "1.0.0",
+  "description": "PetQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FoysalOsmany/petql.git"
+  },
+  "keywords": [
+    "nodejs",
+    "graphql"
+  ],
+  "author": "Foysal Osmany",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FoysalOsmany/petql/issues"
+  },
+  "homepage": "https://github.com/FoysalOsmany/petql#readme"
+}
