@@ -15,7 +15,7 @@ export class OwnerService implements IOwnerService {
 
   create(ownerData: IOwner): any {
     return Q.ninvoke(db.collection('owners'), 'insert', ownerData)
-      .then((data: any) => Q.resolve(data))
+      .then((data: any) => Q.resolve(data && data.length ? data[0] : data))
       .catch((e: any) => Q.reject(e));
   }
 
@@ -33,7 +33,7 @@ export class OwnerService implements IOwnerService {
 
   update(_id: string, ownerData: IOwner) {
     return Q.ninvoke(db.collection('owners'), 'update', {_id: _id}, ownerData)
-      .then(data => Q.resolve(data))
+      .then(() => Q.resolve(Object.assign({}, {_id}, ownerData)))
       .catch(e => {
         return Q.reject(e)
       });
@@ -41,7 +41,7 @@ export class OwnerService implements IOwnerService {
 
   delete(_id: string) {
     return Q.ninvoke(db.collection('owners'), 'remove', {_id: _id})
-      .then(() => Q.resolve('deleted'))
+      .then(() => Q.resolve(`deleted id ${_id}`))
       .catch(e => {
         return Q.reject(e)
       });
@@ -63,7 +63,7 @@ export class OwnerService implements IOwnerService {
         owner['owns'].push({_id, name});
 
         return this.update(_id, owner)
-          .then(data => Q.resolve(data))
+          .then(() => Q.resolve(Object.assign({}, {_id}, owner)))
           .catch(e => Q.reject(e))
       }
     ).catch(e => Q.reject(e))
@@ -77,7 +77,7 @@ export class OwnerService implements IOwnerService {
         }
 
         return this.update(_id, owner)
-          .then(data => Q.resolve(data))
+          .then(() => Q.resolve(Object.assign({}, {_id}, owner)))
           .catch(e => Q.reject(e))
       })
   }
