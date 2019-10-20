@@ -8,7 +8,7 @@ import Q from "q";
 export class PetService implements IPetService {
   create(petData: IPet): any {
     return Q.ninvoke(db.collection('pets'), 'insert', petData)
-      .then((data: any) => Q.resolve(data))
+      .then((data: any) => Q.resolve(data && data.length ? data[0] : data))
       .catch((e: any) => Q.reject(e));
   }
 
@@ -26,7 +26,7 @@ export class PetService implements IPetService {
 
   update(_id: string, petData: IPet): any {
     return Q.ninvoke(db.collection('pets'), 'update', {_id: _id}, petData)
-      .then((data: any) => Q.resolve(data))
+      .then(() => Q.resolve({...{_id}, ...petData}))
       .catch((e: any) => {
         return Q.reject(e)
       });
@@ -34,7 +34,7 @@ export class PetService implements IPetService {
 
   delete(_id: string): any {
     return Q.ninvoke(db.collection('pets'), 'remove', {_id: _id})
-      .then(() => Q.resolve('deleted'))
+      .then(() => Q.resolve(`deleted id ${_id}`))
       .catch((e: any) => {
         return Q.reject(e)
       });
