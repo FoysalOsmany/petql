@@ -52,15 +52,13 @@ export class OwnerService implements IOwnerService {
       this.findById(_id),
       this.petService.findById(pid)
     ]).spread((owner: IOwner, pet: IPet) => {
-        const {_id, name} = pet;
-
         owner['owns'] = owner['owns'] || [];
 
-        if (owner.hasOwnProperty('owns') && owner.owns) {
-          owner.owns = owner.owns.filter((pet: any) => pet._id === pid);
+        if (owner.hasOwnProperty('owns') && owner.owns.length) {
+          owner.owns = owner.owns.filter((p: any) => p._id.toString() !== pid.toString());
         }
 
-        owner['owns'].push({_id, name});
+        owner['owns'].push(pet);
 
         return this.update(_id, owner)
           .then(() => Q.resolve(Object.assign({}, {_id}, owner)))
@@ -73,7 +71,7 @@ export class OwnerService implements IOwnerService {
     return this.findById(_id)
       .then((owner: IOwner) => {
         if (owner.hasOwnProperty('owns') && owner.owns) {
-          owner.owns = owner.owns.filter((pet: any) => pet._id === pid);
+          owner.owns = owner.owns.filter((pet: any) => pet._id.toString() !== pid.toString());
         }
 
         return this.update(_id, owner)

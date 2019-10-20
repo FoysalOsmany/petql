@@ -11,9 +11,9 @@ export class PetModel {
   @Field({ nullable: true })
   color?: string;
 
-  @Field({ nullable: true })
-  age?: number;
+  @Field()
+  age: number;
 
-  @Field({ nullable: true })
-  breed?: string;
+  @Field()
+  breed: string;
 }

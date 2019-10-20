@@ -7,15 +7,15 @@ export class PetDataInput {
   @MaxLength(30)
   name: string;
 
-  @Field({ nullable: true })
+  @Field({nullable: true})
   @Length(2, 15)
   color?: string;
 
-  @Field({ nullable: true })
+  @Field()
   @IsNumber()
-  age?: number;
+  age: number;
 
-  @Field({ nullable: true })
+  @Field()
   @Length(2, 15)
-  breed?: string;
+  breed: string;
 }

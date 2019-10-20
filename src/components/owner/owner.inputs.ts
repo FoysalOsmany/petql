@@ -8,14 +8,14 @@ export class OwnerDataInput {
   name: string;
 
   @Field({ nullable: true })
-  @Length(5, 255)
-  description?: string;
+  @MaxLength(500)
+  address?: string;
 
-  @Field({ nullable: true })
+  @Field()
   @Length(5, 20)
-  phone?: string;
+  phone: string;
 
-  @Field({ nullable: true })
+  @Field()
   @IsEmail()
-  email?: string;
+  email: string;
 }
