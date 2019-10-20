@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  server: # server service
+    build: .
+    volumes:
+      - .:/app-server #mount volume
+    working_dir: /app-server #working dir inside image
+    env_file: .env
+    environment:
+      NODE_ENV: $NODE_ENV
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
+
+  database: # database service
+    image: mongo # database image mongo
