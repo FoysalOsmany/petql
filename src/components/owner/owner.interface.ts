@@ -1,8 +1,8 @@
 export interface IOwner {
-  _id: string,
+  _id?: string,
   name: string,
-  address: string,
-  phone: number,
+  address?: string,
+  phone: string,
   email: string
   owns?: any[]
 }
