@@ -2,9 +2,13 @@
   "name": "petql",
   "version": "1.0.0",
   "description": "PetQL",
-  "main": "server.js",
+  "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "docker-compose rm -f && docker-compose build --no-cache && docker-compose up",
+    "start": "nodemon src/server.ts",
+    "debug": "nodemon --inspect src/server.ts",
+    "test": "NODE_ENV=test mocha -r ts-node/register src/**/*.test.ts",
+    "coverage": "NODE_ENV=test nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "repository": {
     "type": "git",
@@ -19,5 +23,33 @@
   "bugs": {
     "url": "https://github.com/FoysalOsmany/petql/issues"
   },
-  "homepage": "https://github.com/FoysalOsmany/petql#readme"
+  "homepage": "https://github.com/FoysalOsmany/petql#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "helmet": "^3.21.1",
+    "inversify": "^5.0.1",
+    "mongoskin": "^2.1.0",
+    "nodemon": "^1.19.3",
+    "reflect-metadata": "^0.1.13",
+    "tingodb": "^0.6.1",
+    "typescript": "^3.6.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.1",
+    "@types/helmet": "0.0.44",
+    "@types/mocha": "^5.2.7",
+    "@types/q": "^1.5.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
+    "q": "^1.5.1",
+    "ts-node": "^8.4.1"
+  }
 }
