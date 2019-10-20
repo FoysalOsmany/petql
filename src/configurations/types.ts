@@ -1,11 +1,11 @@
 let TYPES = {
   IComponentRoutes: Symbol('IComponentRoutes'),
 
-  IPetService: Symbol('IPetService'),
+  IOwnerRoutes: Symbol('IOwnerRoutes'),
   IOwnerService: Symbol('IOwnerService'),
 
+  IPetService: Symbol('IPetService'),
   IPetRoutes: Symbol('IPetRoutes'),
-  IOwnerRoutes: Symbol('IOwnerRoutes'),
 };
 
 export { TYPES };
