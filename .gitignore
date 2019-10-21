@@ -61,5 +61,7 @@ typings/
 .idea
 
 # Datasources
-data
-mockdata
+data/owners
+data/pets
+mockdata/owners
+mockdata/pets
