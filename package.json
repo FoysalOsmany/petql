@@ -6,8 +6,11 @@
   "scripts": {
     "setup": "docker-compose rm -f && docker-compose build --no-cache && docker-compose up",
     "start": "nodemon src/server.ts",
+    "test:server": "NODE_ENV=test nodemon src/server.ts",
     "debug": "nodemon --inspect src/server.ts",
-    "test": "NODE_ENV=test mocha -r ts-node/register src/**/*.test.ts",
+    "bdd": "NODE_ENV=test ./node_modules/.bin/cucumber-js -f node_modules/cucumber-pretty",
+    "unit": "NODE_ENV=test mocha -r ts-node/register src/**/*.test.ts",
+    "test":"npm run unit && npm run bdd",
     "coverage": "NODE_ENV=test nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "repository": {
@@ -37,6 +40,7 @@
     "mongoskin": "^2.1.0",
     "nodemon": "^1.19.3",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^4.0.2",
     "tingodb": "^0.6.1",
     "type-graphql": "^0.17.5",
     "typescript": "^3.6.4"
@@ -50,6 +54,8 @@
     "@types/q": "^1.5.2",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cucumber": "^6.0.2",
+    "cucumber-pretty": "^6.0.0",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
     "q": "^1.5.1",
