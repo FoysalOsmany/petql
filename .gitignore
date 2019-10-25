@@ -54,9 +54,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-
 # Webstorm
 .idea
 
@@ -65,3 +62,5 @@ data/owners
 data/pets
 mockdata/owners
 mockdata/pets
+
+.history
