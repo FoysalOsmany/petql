@@ -4,7 +4,7 @@
   "description": "PetQL",
   "main": "src/server.ts",
   "scripts": {
-    "setup": "docker-compose rm -f && docker-compose build --no-cache && docker-compose up",
+    "setup": "npm install && docker-compose rm -f && docker-compose build --no-cache && docker-compose up",
     "start": "nodemon src/server.ts",
     "test:server": "NODE_ENV=test nodemon src/server.ts",
     "debug": "nodemon --inspect src/server.ts",
