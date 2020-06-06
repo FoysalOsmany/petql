@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/FoysalOsmany/petql#readme",
   "dependencies": {
-    "apollo-server-express": "^2.9.6",
+    "apollo-server-express": "^2.14.2",
     "body-parser": "^1.19.0",
     "class-validator": "^0.10.2",
     "colors": "^1.4.0",
