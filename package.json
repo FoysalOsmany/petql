@@ -42,7 +42,7 @@
     "reflect-metadata": "^0.1.13",
     "supertest": "^4.0.2",
     "tingodb": "^0.6.1",
-    "type-graphql": "^0.17.5",
+    "type-graphql": "^0.17.6",
     "typescript": "^3.6.4"
   },
   "devDependencies": {
